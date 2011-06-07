@@ -9,10 +9,8 @@ import java.util.Enumeration;
 import java.util.Iterator;
 
 import net.frontlinesms.CommUtils;
-import net.frontlinesms.payment.safaricom.SafaricomPaymentService;
 
 import org.mockito.Mockito;
-import org.smslib.CService;
 
 import serial.SerialClassFactory;
 import serial.mock.CommPortIdentifier;
@@ -23,20 +21,11 @@ import serial.mock.SerialPortHandler;
  * @author aga
  */
 @SuppressWarnings("unchecked")
-public class CreditSimulationLauncher {
+public class CreditSimulationLauncher {	
 	public static void main(String[] args) throws Exception {
 		setupMockModem();
-		
-		SafaricomPaymentService safaricom = new SafaricomPaymentService();
-		CService cService = new CService("COM1", 9600, "Wavecom", "Stk", null);
-		if(!(cService.getAtHandlerName().equals("CATHandler_Wavecom_Stk"))) {
-			throw new RuntimeException("Failed to initiialise AT Handler as expected.");
-		}
-		safaricom.setCService(cService);
-		
 		// Launch FrontlineSMS
 		startFrontlineSms(args);
-		
 		System.out.println("Serial lib: " + SerialClassFactory.getInstance().getSerialPackageName());
 	}
 
@@ -44,7 +33,7 @@ public class CreditSimulationLauncher {
 		net.frontlinesms.DesktopLauncher.main(args);
 	}
 
-	private static void setupMockModem() throws Exception {
+	public static void setupMockModem() throws Exception {
 		// Set up modem simulation
 		MockSerial.init();
 		MockSerial.setMultipleOwnershipAllowed(true);
