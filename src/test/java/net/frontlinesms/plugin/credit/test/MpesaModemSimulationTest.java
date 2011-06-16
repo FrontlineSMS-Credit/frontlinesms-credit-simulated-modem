@@ -9,6 +9,7 @@ import net.frontlinesms.payment.safaricom.MpesaPaymentService;
 import net.frontlinesms.payment.safaricom.MpesaPersonalService;
 
 import org.creditsms.plugins.paymentview.data.domain.Account;
+import org.creditsms.plugins.paymentview.data.domain.Client;
 import org.junit.Before;
 import org.junit.Test;
 import org.smslib.CService;
@@ -59,10 +60,13 @@ public class MpesaModemSimulationTest{
 	@Test
 	public void testMakePayment (){
 		try {
-			Account account = new Account();
-			account.setAccountNumber("0700000011");
+/*			Account account = new Account();
+			account.setAccountNumber("0700000011");*/
 			
-			mpesaPaymentService.makePayment(account, new BigDecimal("13433.32"));
+			Client client = new Client();
+			client.setPhoneNumber("254701010101");
+			
+			mpesaPaymentService.makePayment(client, new BigDecimal("13433.32"));
 		} catch (PaymentServiceException e) {
 			e.printStackTrace();
 		}
