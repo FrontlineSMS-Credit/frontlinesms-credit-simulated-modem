@@ -7,8 +7,10 @@ import java.util.TooManyListenersException;
 import net.frontlinesms.payment.PaymentServiceException;
 import net.frontlinesms.payment.safaricom.MpesaPaymentService;
 import net.frontlinesms.payment.safaricom.MpesaPersonalService;
+import net.frontlinesms.ui.events.FrontlineUiUpateJob;
 
 import org.creditsms.plugins.paymentview.data.domain.Account;
+import org.creditsms.plugins.paymentview.data.domain.Client;
 import org.junit.Before;
 import org.junit.Test;
 import org.smslib.CService;
@@ -58,13 +60,43 @@ public class MpesaModemSimulationTest{
 	
 	@Test
 	public void testMakePayment (){
+		WaitingJob.waitForEvent();
 		try {
-			Account account = new Account();
-			account.setAccountNumber("0700000011");
+/*			Account account = new Account();
+			account.setAccountNumber("0700000011");*/
 			
-			mpesaPaymentService.makePayment(account, new BigDecimal("13433.32"));
+			Client client = new Client();//KIM
+			client.setPhoneNumber("0701010101");//KIM
+			
+			
+			//mpesaPaymentService.makePayment(account, new BigDecimal("13433.32"));
+			mpesaPaymentService.makePayment(client, new BigDecimal("13433.32"));
 		} catch (PaymentServiceException e) {
 			e.printStackTrace();
 		}
+	}
+}
+
+class WaitingJob extends FrontlineUiUpateJob {
+	private boolean running;
+	private void block() {
+		running = true;
+		execute();
+		while(running) {
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				running = false;
+			}
+		}
+	}
+	
+	public void run() {
+		running = false;
+	}
+	
+	/** Put a job on the UI event queue, and block until it has been run. */
+	public static void waitForEvent() {
+		new WaitingJob().block();
 	}
 }
