@@ -15,8 +15,14 @@ class SafaricomWavecomStates {
 			"AT+CMEE=1", "OK",
 			"AT+STSF=1", "OK",
 			"AT+CPIN?", "+CPIN: READY",
-			"AT+CGMI", "WAVECOM MODEM\rOK",
-			"AT+CGMM", "900P\rOK",	
+			
+			// TODO these are the values that an actual device would return - should switch back to these later and make sure the correct CATHandler is still loaded
+//			"AT+CGMI", "WAVECOM MODEM\rOK",
+//			"AT+CGMM", "900P\rOK",
+			// These are temporary values to force loading of the CATHandler_Wavecom_Stk
+			"AT+CGMI", "Wavecom\rOK", 
+			"AT+CGMM", "Stk\rOK",
+			
 			"AT+CNUM", "+CNUM :\"Phone\", \"0712345678\",129\rOK",
 			"AT+CGSN", "123456789099998\rOK",
 			"AT+CIMI", "254123456789012\rOK",
