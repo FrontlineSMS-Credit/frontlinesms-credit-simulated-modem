@@ -65,6 +65,8 @@ public class MpesaModemSimulationTest{
 			mpesaPaymentService.makePayment(account, new BigDecimal("13433.32"));
 		} catch (PaymentServiceException e) {
 			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 }
