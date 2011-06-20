@@ -65,38 +65,13 @@ public class MpesaModemSimulationTest{
 /*			Account account = new Account();
 			account.setAccountNumber("0700000011");*/
 			
-			Client client = new Client();//KIM
-			client.setPhoneNumber("0701010101");//KIM
+			Client client = new Client();
+			client.setPhoneNumber("254701010101");
 			
-			
+			mpesaPaymentService.makePayment(client, new BigDecimal("13433.32"));
 			//mpesaPaymentService.makePayment(account, new BigDecimal("13433.32"));
 			mpesaPaymentService.makePayment(client, new BigDecimal("13433.32"));
 		} catch (PaymentServiceException e) {
 			e.printStackTrace();
 		}
-	}
-}
-
-class WaitingJob extends FrontlineUiUpateJob {
-	private boolean running;
-	private void block() {
-		running = true;
-		execute();
-		while(running) {
-			try {
-				Thread.sleep(2000);
-			} catch (InterruptedException e) {
-				running = false;
-			}
-		}
-	}
-	
-	public void run() {
-		running = false;
-	}
-	
-	/** Put a job on the UI event queue, and block until it has been run. */
-	public static void waitForEvent() {
-		new WaitingJob().block();
-	}
 }
