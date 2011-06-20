@@ -60,7 +60,6 @@ public class MpesaModemSimulationTest{
 	
 	@Test
 	public void testMakePayment (){
-		WaitingJob.waitForEvent();
 		try {
 /*			Account account = new Account();
 			account.setAccountNumber("0700000011");*/
@@ -74,4 +73,5 @@ public class MpesaModemSimulationTest{
 		} catch (PaymentServiceException e) {
 			e.printStackTrace();
 		}
+	}
 }
