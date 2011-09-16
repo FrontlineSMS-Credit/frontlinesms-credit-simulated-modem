@@ -61,13 +61,9 @@ public class MpesaModemSimulationTest{
 	@Test
 	public void testMakePayment (){
 		try {
-/*			Account account = new Account();
-			account.setAccountNumber("0700000011");*/
-			
 			Client client = new Client();
 			client.setPhoneNumber("254701010101");
 			mpesaPaymentService.makePayment(client, new OutgoingPayment(client, new BigDecimal("13433.32"), new Account(), ""));
-			//mpesaPaymentService.makePayment(account, new BigDecimal("13433.32"));
 //			mpesaPaymentService.makePayment(client, new OutgoingPayment(client, new BigDecimal("13433.32"), new Account(), ""));
 		} catch (PaymentServiceException e) {
 			e.printStackTrace();
