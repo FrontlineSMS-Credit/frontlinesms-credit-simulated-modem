@@ -7,10 +7,10 @@ import java.util.TooManyListenersException;
 import net.frontlinesms.payment.PaymentServiceException;
 import net.frontlinesms.payment.safaricom.MpesaPaymentService;
 import net.frontlinesms.payment.safaricom.MpesaPersonalService;
-import net.frontlinesms.ui.events.FrontlineUiUpateJob;
 
 import org.creditsms.plugins.paymentview.data.domain.Account;
 import org.creditsms.plugins.paymentview.data.domain.Client;
+import org.creditsms.plugins.paymentview.data.domain.OutgoingPayment;
 import org.junit.Before;
 import org.junit.Test;
 import org.smslib.CService;
@@ -66,13 +66,10 @@ public class MpesaModemSimulationTest{
 			
 			Client client = new Client();
 			client.setPhoneNumber("254701010101");
-			
-			mpesaPaymentService.makePayment(client, new BigDecimal("13433.32"));
+			mpesaPaymentService.makePayment(client, new OutgoingPayment(client, new BigDecimal("13433.32"), new Account(), ""));
 			//mpesaPaymentService.makePayment(account, new BigDecimal("13433.32"));
-			mpesaPaymentService.makePayment(client, new BigDecimal("13433.32"));
+//			mpesaPaymentService.makePayment(client, new OutgoingPayment(client, new BigDecimal("13433.32"), new Account(), ""));
 		} catch (PaymentServiceException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}

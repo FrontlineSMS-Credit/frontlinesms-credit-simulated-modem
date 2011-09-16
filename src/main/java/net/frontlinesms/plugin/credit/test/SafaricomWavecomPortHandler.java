@@ -1,7 +1,7 @@
 package net.frontlinesms.plugin.credit.test;
 
-import net.frontlinesms.test.serial.HayesState;
-import net.frontlinesms.test.serial.StatefulHayesPortHandler;
+import net.frontlinesms.test.serial.hayes.HayesState;
+import net.frontlinesms.test.serial.hayes.StatefulHayesPortHandler;
 
 public class SafaricomWavecomPortHandler extends StatefulHayesPortHandler {
 	public SafaricomWavecomPortHandler() {
@@ -54,7 +54,6 @@ class SafaricomWavecomStates {
 					"+STGI: 1,7,\"Send money\",0\r"+
 					"+STGI: 2,7,\"Withdraw cash\",0\r"+
 					"+STGI: 3,7,\"Buy airtime\",0\r"+
-					"+STGI: 4,7,\"Pay Bill\",0\r"+
 					"+STGI: 4,7,\"Pay Bill\",0\r"+
 					"+STGI: 6,7,\"ATM Withdrawal\",0\r"+
 					"+STGI: 7,7,\"My account\",0\r"+

@@ -37,7 +37,7 @@ public class CreditSimulationLauncher {
 		// Set up modem simulation
 		MockSerial.init();
 		MockSerial.setMultipleOwnershipAllowed(true);
-		SerialPortHandler portHandler = new SafaricomWavecomPortHandler();
+		SerialPortHandler portHandler = (SerialPortHandler) new SafaricomWavecomPortHandler();
 		CommPortIdentifier cpi = new CommPortIdentifier("COM1", portHandler);
 		MockSerial.setIdentifier("COM1", cpi);
 		Mockito.when(MockSerial.getMock().values()).thenReturn(Arrays.asList(new CommPortIdentifier[]{
