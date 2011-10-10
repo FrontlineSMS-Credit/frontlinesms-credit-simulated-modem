@@ -10,7 +10,19 @@
 	<scm>
 		<developerConnection>scm:git:git@github.com:${github.projectOwner}/${github.projectName}.git</developerConnection>
 	</scm>
+			
 
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 	<distributionManagement>
 		<repository>
 			<id>frontlinesms.repo</id>
@@ -24,6 +36,11 @@
 			<groupId>net.frontlinesms.test</groupId>
 			<artifactId>hayescommandset-test</artifactId>
 			<version>0.0.2-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>net.frontlinesms.test</groupId>
+			<artifactId>serial-test</artifactId>
+			<version>0.0.4-releasetest</version>
 		</dependency>
 		<dependency>
 			<groupId>net.frontlinesms.core</groupId>
